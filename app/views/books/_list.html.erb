@@ -1,0 +1,42 @@
+
+  <h2>User info</h2>
+  <%= image_tag user.get_profile_image(100,100) %>
+  <!--userのprofile＿imageからimage_tagを取得(get)する-->
+<table>
+  <thead>
+    <tr>
+      <th><strong>name</strong></th>
+      <th>
+      <!--<%#= if @user == current_user %>-->
+      <!--<%#= link_to user_path(user.id) do %>-->
+      <%= user.name %>
+      <!--<%# else %>-->
+      <!--<%# end %>-->
+      </th>
+    </tr>
+    <tr>
+      <th><strong>introduction</strong></th>
+      <th>
+      <!--<%#= link_to user_path(user.id) do %>-->
+      <%= user.introduction %>
+      <!--<%# end %>-->
+      </th><!--任意のintroductionが入る-->
+    </tr>
+  </thead>
+</table>
+
+<div class="row">
+  <%= link_to edit_user_path(user.id), class: "btn btn-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i>
+  <% end %>
+</div>
+  
+  
+    <%= form_with model: Book.new do |f| %>
+      <h2>New book</h2>
+        <h4>Title</h4>
+          <%= f.text_field :title %>
+        <h4>Opinion</h4>
+          <%= f.text_area :body %>
+        <%= f.submit 'Create Book' %>
+    <% end %>
